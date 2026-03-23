@@ -2,12 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For You ❤️</title>
 
 <style>
-body{
+
+body {
 margin:0;
 font-family:Arial;
 text-align:center;
@@ -16,7 +18,7 @@ color:white;
 
 background: linear-gradient(270deg,#0a0010,#200020,#400020);
 background-size:800% 800%;
-animation:gradientMove 12s ease infinite;
+animation: gradientMove 12s ease infinite;
 }
 
 @keyframes gradientMove{
@@ -32,6 +34,7 @@ width:2px;
 height:2px;
 background:white;
 animation:twinkle 2s infinite;
+pointer-events:none;
 }
 
 @keyframes twinkle{
@@ -104,6 +107,7 @@ to{opacity:1;transform:scale(1);}
 .heart{
 position:fixed;
 animation:float 4s linear infinite;
+pointer-events:none;
 }
 
 @keyframes float{
@@ -116,6 +120,7 @@ position:fixed;
 width:8px;
 height:8px;
 animation:fall 3s linear infinite;
+pointer-events:none;
 }
 
 @keyframes fall{
@@ -123,8 +128,7 @@ animation:fall 3s linear infinite;
 100%{transform:translateY(100vh);}
 }
 
-/* MOBILE */
-@media(max-width:600px){
+@media (max-width:600px){
 
 .page{padding:20px;}
 
@@ -161,7 +165,7 @@ outline:none;
 
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
-<input type="tel" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
+<input type="tel" id="pass" placeholder="DDMMYYYY">
 <button type="button" onclick="checkPass()">Enter ❤️</button>
 <p id="error"></p>
 </div>
@@ -191,7 +195,7 @@ outline:none;
 <p>
 Un kooda irundha ovvoru naalum enaku romba special 💖  
 Sirippum irundhuchu, sandaiyum irundhuchu 😄😅  
-Aana ellathukum mela un mela irukra love mattum koraiyave illa 💖
+Aana ellathukum mela un mela Irukra Andha love mattum Koranchadhey illa 💖
 </p>
 </div>
 
@@ -212,7 +216,7 @@ s.style.top=Math.random()*100+"vh";
 document.body.appendChild(s);
 }
 
-/* HEART TRAIL (MOUSE + TOUCH) */
+/* HEART TRAIL */
 
 function createHeart(x,y){
 let h=document.createElement("div");
@@ -239,19 +243,15 @@ let i=0;
 let loadingText=document.getElementById("loadingText");
 
 let typing=setInterval(()=>{
-
 loadingText.innerHTML+=text[i];
 i++;
 
 if(i>=text.length){
-
 clearInterval(typing);
-
 setTimeout(()=>{
 loadingText.innerHTML="1000 days together… but I still want a lifetime with you ❤️";
 setTimeout(()=>showPage("passwordPage"),2000);
 },1000);
-
 }
 
 },50);
@@ -259,7 +259,6 @@ setTimeout(()=>showPage("passwordPage"),2000);
 /* PASSWORD */
 
 function checkPass(){
-
 let val=document.getElementById("pass").value;
 
 if(val==="29062023"){
@@ -268,7 +267,6 @@ startSlideshow();
 }else{
 document.getElementById("error").innerText="Thappu daw Battuma😄💕 ";
 }
-
 }
 
 /* SLIDESHOW */
