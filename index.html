@@ -2,10 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ MOBILE FIX ADDED -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For You ❤️</title>
 
 <style>
@@ -118,16 +114,6 @@ img {
     0%{transform:translateY(-50px);}
     100%{transform:translateY(100vh);}
 }
-
-/* ✅ MOBILE RESPONSIVE FIX ONLY ADDED */
-@media (max-width: 768px) {
-    h1 { font-size:22px; padding:10px; }
-    p { font-size:16px; padding:0 15px; }
-    button { font-size:16px; padding:10px 18px; }
-    img { width:90%; max-width:300px; }
-    #noBtn { font-size:14px; padding:8px 12px; }
-    .page { padding:10px; }
-}
 </style>
 </head>
 
@@ -166,25 +152,205 @@ img {
 
 <script>
 
-// (ALL YOUR ORIGINAL JS SAME — NOT TOUCHED)
+// (YOUR ORIGINAL CODE — UNCHANGED)
 
-// 💥 ONLY CHANGE HERE (LOVE MESSAGES UPGRADED)
-let loveMsgs = [
-"I love you Annamica ❤️",
-"My forever Battuma 💍",
-"Chello 😘",
-"My thango 💖",
-"Kuttachii 😍",
-"You are my world 🌍",
-"Sidu moonji 😂❤️",
-"My kovakaari 😜",
-"My lovable person 💕",
-"1000 days strong with you 💞",
-"En uyir nee dhaan 💖",
-"Unnai romba love panren ❤️"
+// STARS BACKGROUND ✨
+for(let i=0;i<80;i++){
+ let s=document.createElement("div");
+ s.className="star";
+ s.style.left=Math.random()*100+"vw";
+ s.style.top=Math.random()*100+"vh";
+ document.body.appendChild(s);
+}
+
+// CURSOR HEART TRAIL 💖
+document.addEventListener("mousemove",e=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerText="💖";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),1000);
+});
+
+// LOADING
+let text="Tomorrow… we complete 1000 days together 💕";
+let i=0;
+let loadingText=document.getElementById("loadingText");
+
+let typing=setInterval(()=>{
+ loadingText.innerHTML+=text[i];
+ i++;
+ if(i>=text.length){
+  clearInterval(typing);
+  setTimeout(()=>{
+   loadingText.innerHTML="1000 days of love… fights… memories… and us ❤️";
+   setTimeout(()=>showPage("passwordPage"),2000);
+  },1000);
+ }
+},50);
+
+// PASSWORD
+function checkPass(){
+ let val=document.getElementById("pass").value;
+ if(val==="29062023"){
+  showPage("slideshow");
+  startSlideshow();
+ } else {
+  document.getElementById("error").innerText="Wrong 😏 try again";
+ }
+}
+
+// SLIDESHOW
+let photos=[
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.43%20PM.jpeg"
 ];
+
+let captions=[
+"Our first memory ❤️",
+"The best day with you 💫",
+"Forever us 💕"
+];
+
+let index=0;
+
+function startSlideshow(){
+ let slide=setInterval(()=>{
+  document.getElementById("photo").src=photos[index];
+  document.getElementById("caption").innerText=captions[index];
+  index++;
+  if(index>=photos.length){
+   clearInterval(slide);
+   showEmotion();
+  }
+ },2000);
+}
+
+// TYPEWRITER EMOTION 💖
+let emoText=[
+"From strangers… to something beautiful 💫",
+"We laughed together 😄",
+"We cried sometimes 😢",
+"We fought… but never gave up ❤️",
+"And now… we are about to complete 1000 days 💕",
+"And still… I fall for you every single day 💖",
+"So before we reach 1000 days…",
+"I have one question for you… 💍"
+];
+
+let emoIndex=0;
+
+function showEmotion(){
+ showPage("emotion");
+ let emo=document.getElementById("emotionText");
+
+ let interval=setInterval(()=>{
+  let txt=emoText[emoIndex];
+  let j=0;
+  let typer=setInterval(()=>{
+   emo.innerHTML+=txt[j];
+   j++;
+   if(j>=txt.length){
+    clearInterval(typer);
+   }
+  },30);
+
+  emoIndex++;
+  if(emoIndex>=emoText.length){
+   clearInterval(interval);
+   setTimeout(()=>showPage("proposal"),4000);
+  } else {
+   setTimeout(()=>emo.innerHTML="",2000);
+  }
+ },2500);
+}
+
+// NO BUTTON TEXTS
+let noTexts = [
+"1000 days ah waste panna poriya? 😭",
+"Think about our 1000 days 😏",
+"Don't break my heart 💔",
+"Wrong choice 😜",
+"After 1000 days still NO ah? 😆",
+"Try YES kuttyma ❤️"
+];
+
+let noCount=0;
+function moveNo(){
+ let btn=document.getElementById("noBtn");
+ btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+ btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+ btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+ noCount++;
+ if(noCount>=6) btn.style.display="none";
+}
+
+// YES CLICK 💥
+function yesClicked(){
+ showPage("final");
+
+ for(let i=0;i<80;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),3000);
+ }
+}
+
+// NAV
+function showLetter(){ showPage("letter"); }
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+}
+
+
+// 💥 EXTRA GOD LEVEL ADDITIONS (ONLY ADDED BELOW)
+
+// 💖 DOUBLE CLICK HEART BURST
+document.addEventListener("dblclick", e => {
+ for(let i=0;i<25;i++){
+   let h=document.createElement("div");
+   h.className="heart";
+   h.innerText="💖";
+   h.style.left=e.clientX+"px";
+   h.style.top=e.clientY+"px";
+   h.style.fontSize = (Math.random()*20+10)+"px";
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),1500);
+ }
+});
+
+// 💕 FLOATING LOVE TEXTS
+let loveMsgs = ["I love you ❤️","My forever 💍","Kuttyma 😘","1000 days strong 💕"];
+
+setInterval(()=>{
+ let msg=document.createElement("div");
+ msg.innerText = loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
+ msg.style.position="fixed";
+ msg.style.left=Math.random()*100+"vw";
+ msg.style.top="100vh";
+ msg.style.color="pink";
+ msg.style.fontSize="14px";
+ document.body.appendChild(msg);
+
+ let move=setInterval(()=>{
+   msg.style.top = (msg.offsetTop - 2) + "px";
+ },20);
+
+ setTimeout(()=>{
+   clearInterval(move);
+   msg.remove();
+ },4000);
+
+},1500);
 
 </script>
 
 </body>
-</html>
+</html>  
