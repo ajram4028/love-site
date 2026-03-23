@@ -365,15 +365,42 @@ setTimeout(()=>emo.innerHTML="",2000);
 }
 
 /* NO BUTTON */
+// NO BUTTON TEXTS
+let noTexts = [
+"Heyyy venam d 😭 touch pannadha...",
+"Adei 😳 enna panra… NO ah press panna poriya?!",
+"Thodadha… please da 🥺",
+"Nee idha press panna naan hurt aaiduven 💔",
+"Heyyy Annamica 😭 think pannitu press pannu...",
+"1000 days ku apramum NO ah? 😡",
+"Idha press panna adichiruven 😤 (joke da 😘)",
+"Kuttyma 😭 don’t do this to me...",
+"Nee YES dhaan press pannuva nu namburen ❤️",
+"Adei chello 😏 wrong button paathu iruka...",
+"Thappu button idhu 😜 YES pakkam pogu...",
+"Heyyy kovakaari 😆 calm ah iru… YES press pannu",
+"Sidu moonji 😂 idhu unaku set aagathu…",
+"En thango 💖 idhu unaku illa… YES dhaan",
+"Last warning 😏 NO press panna allow illa...",
+"Heyyyy 😭 naan romba serious ah kekuren...",
+"Please d 🥺 idha vittutu YES pannu...",
+"Un answer already YES dhaan 😘",
+"En world ah ipdi pannadha 😭",
+"Okay fine 😤 NO option soon disappear aagum 😈"
+];
 
-let noCount=0;
+let noCount = 0;
 
 function moveNo(){
 
-let btn=document.getElementById("noBtn");
+let btn = document.getElementById("noBtn");
 
-btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+// change text randomly
+btn.innerText = noTexts[Math.floor(Math.random()*noTexts.length)];
+
+// move button
+btn.style.left = Math.random()*(window.innerWidth-100)+"px";
+btn.style.top = Math.random()*(window.innerHeight-50)+"px";
 
 noCount++;
 
