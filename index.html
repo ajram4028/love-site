@@ -148,15 +148,18 @@ let captions = [
 let index = 0;
 
 function startSlideshow(){
-    setInterval(()=>{
+    let slide = setInterval(()=>{
+
         document.getElementById("photo").src = photos[index];
         document.getElementById("caption").innerText = captions[index];
 
         index++;
 
         if(index >= photos.length){
-            index = 0;
+            clearInterval(slide);   // stop slideshow
+            showEmotion();          // go to next page
         }
+
     },2000);
 }
 
