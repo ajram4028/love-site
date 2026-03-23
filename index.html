@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+.page {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.active { display: flex; }
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#yesBtn { background: pink; }
+#noBtn {
+    background: gray;
+    position: absolute;
+}
+
+h1 { font-size: 35px; }
+
+.heart {
+    position: fixed;
+    animation: float 3s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="page1" class="page active">
+    <h1>It’s been 1000+ days of us 💕</h1>
+    <p>Every moment with you is special ❤️</p>
+    <button onclick="nextPage()">Continue 💖</button>
+</div>
+
+<div id="page2" class="page">
+    <h1>From strangers... to everything ❤️</h1>
+    <button onclick="showProposal()">Next 💫</button>
+</div>
+
+<div id="page3" class="page">
+    <h1>Annamica… Will you marry me? 💍</h1>
+    <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 😏</button>
+</div>
+
+<div id="page4" class="page">
+    <h1>💖 You made me the happiest person alive 💖</h1>
+</div>
+
+<script>
+function nextPage() {
+    page1.classList.remove("active");
+    page2.classList.add("active");
+}
+
+function showProposal() {
+    page2.classList.remove("active");
+    page3.classList.add("active");
+}
+
+function moveNo() {
+    let btn = document.getElementById("noBtn");
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+
+    let txt = ["No 😭","Think again 😏","Try YES 😆"];
+    btn.innerText = txt[Math.floor(Math.random()*txt.length)];
+}
+
+function yesClicked() {
+    page3.classList.remove("active");
+    page4.classList.add("active");
+
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerText="💖";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    },200);
+}
+</script>
+
+</body>
+</html>
