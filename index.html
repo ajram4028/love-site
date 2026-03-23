@@ -164,6 +164,11 @@ outline:none;
 </head>
 
 <body>
+
+<audio id="bgMusic" autoplay loop>
+  <source src="sajde-pendujattcomse-1_pGF15voL.mp3" type="audio/mpeg">
+</audio>
+
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
 
 <div id="passwordPage" class="page">
@@ -199,6 +204,13 @@ Aana ellathukum mela un mela Irukra Andha love mattum Koranchadhey illa, Koraiya
 
 <script>
 
+// MUSIC MOBILE FIX
+document.addEventListener("click", function(){
+  let music = document.getElementById("bgMusic");
+  if(music.paused){
+    music.play();
+  }
+});
 // (YOUR ORIGINAL CODE — UNCHANGED)
 
 // STARS BACKGROUND ✨
