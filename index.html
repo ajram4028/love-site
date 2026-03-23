@@ -224,9 +224,8 @@ function moveNo(){
 
     btn.innerText = texts[Math.floor(Math.random() * texts.length)];
 
-    btn.style.left = Math.random()*80 + "%";
-    btn.style.top = Math.random()*80 + "%";
-
+  btn.style.left = Math.random()*(window.innerWidth - 100) + "px";
+btn.style.top = Math.random()*(window.innerHeight - 50) + "px";
     noCount++;
 
     if(noCount >= 6){
