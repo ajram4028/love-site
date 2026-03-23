@@ -2,6 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- MOBILE SCREEN FIX -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For You ❤️</title>
 
 <style>
@@ -9,7 +13,7 @@ body {
     margin:0;
     font-family:Arial;
     text-align:center;
-    overflow:hidden;
+    overflow-x:hidden;
     color:white;
 
     background: linear-gradient(270deg, #0a0010, #200020, #400020);
@@ -89,6 +93,7 @@ img {
     margin:10px;
     animation: zoomFade 2s;
 }
+
 @keyframes zoomFade {
     from {opacity:0; transform:scale(0.8);}
     to {opacity:1; transform:scale(1);}
@@ -98,6 +103,7 @@ img {
     position:fixed;
     animation:float 4s linear infinite;
 }
+
 @keyframes float {
     0% {transform:translateY(0);}
     100% {transform:translateY(-100vh);}
@@ -110,15 +116,52 @@ img {
     height:8px;
     animation: fall 3s linear infinite;
 }
+
 @keyframes fall {
     0%{transform:translateY(-50px);}
     100%{transform:translateY(100vh);}
 }
+
+/* 📱 MOBILE RESPONSIVE FIX */
+@media (max-width:600px){
+
+.page{
+padding:20px;
+}
+
+h1{
+font-size:24px;
+line-height:1.4;
+}
+
+p{
+font-size:16px;
+padding:0 10px;
+}
+
+button{
+font-size:16px;
+padding:10px 20px;
+}
+
+img{
+width:90%;
+max-width:320px;
+height:auto;
+}
+
+input{
+font-size:16px;
+padding:10px;
+width:80%;
+}
+
+}
+
 </style>
 </head>
 
 <body>
-
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
 
 <div id="passwordPage" class="page">
