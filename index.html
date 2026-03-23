@@ -1,114 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>For You ❤️</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial;
-    background: black;
-    color: white;
-    text-align: center;
-    overflow: hidden;
+    margin:0;
+    background:black;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    overflow:hidden;
 }
+
 .page {
-    display: none;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
-.active { display: flex; }
+
+.active { display:flex; }
 
 button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    margin: 10px;
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:18px;
+    margin:10px;
+    cursor:pointer;
 }
 
-#yesBtn { background: pink; }
 #noBtn {
-    background: gray;
-    position: absolute;
+    position:absolute;
+    background:gray;
 }
 
-h1 { font-size: 35px; }
+#yesBtn { background:pink; }
+
+img {
+    width:250px;
+    border-radius:20px;
+    margin:10px;
+}
 
 .heart {
-    position: fixed;
-    animation: float 3s linear infinite;
+    position:fixed;
+    animation:float 3s linear infinite;
 }
 
 @keyframes float {
-    0% {transform: translateY(0);}
-    100% {transform: translateY(-100vh);}
+    0% {transform:translateY(0);}
+    100% {transform:translateY(-100vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div id="page1" class="page active">
-    <h1>It’s been 1000+ days of us 💕</h1>
-    <p>Every moment with you is special ❤️</p>
-    <button onclick="nextPage()">Continue 💖</button>
+<!-- LOADING -->
+<div id="loading" class="page active">
+    <h1 id="loadingText"></h1>
 </div>
 
-<div id="page2" class="page">
-    <h1>From strangers... to everything ❤️</h1>
-    <button onclick="showProposal()">Next 💫</button>
+<!-- PASSWORD -->
+<div id="passwordPage" class="page">
+    <h1>Enter our special date 💕</h1>
+    <input type="password" id="pass" placeholder="DDMMYYYY">
+    <button onclick="checkPass()">Enter ❤️</button>
+    <p id="error"></p>
 </div>
 
-<div id="page3" class="page">
+<!-- SLIDESHOW -->
+<div id="slideshow" class="page">
+    <img id="photo" src="">
+    <p id="caption"></p>
+</div>
+
+<!-- EMOTIONAL -->
+<div id="emotion" class="page">
+    <h1 id="emotionText"></h1>
+</div>
+
+<!-- PROPOSAL -->
+<div id="proposal" class="page">
     <h1>Annamica… Will you marry me? 💍</h1>
     <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
-    <button id="noBtn" onmouseover="moveNo()">NO 😏</button>
+    <button id="noBtn" onmouseover="moveNo()">NO 😈</button>
 </div>
 
-<div id="page4" class="page">
-    <h1>💖 You made me the happiest person alive 💖</h1>
+<!-- FINAL -->
+<div id="final" class="page">
+    <h1>💖 You are my forever 💖</h1>
+    <button onclick="showLetter()">One more surprise 💌</button>
+</div>
+
+<!-- LETTER -->
+<div id="letter" class="page">
+    <h1>I Love You ❤️</h1>
+    <p>You are the best thing that ever happened to me… forever yours 💖</p>
 </div>
 
 <script>
-function nextPage() {
-    page1.classList.remove("active");
-    page2.classList.add("active");
+
+// LOADING TEXT
+let text = "Loading your memories...";
+let i = 0;
+let loadingText = document.getElementById("loadingText");
+
+let typing = setInterval(() => {
+    loadingText.innerHTML += text[i];
+    i++;
+    if(i >= text.length){
+        clearInterval(typing);
+        setTimeout(()=>{
+            showPage("passwordPage");
+        },1000);
+    }
+},50);
+
+// PASSWORD
+function checkPass(){
+    let val = document.getElementById("pass").value;
+    if(val === "01012023"){ // CHANGE THIS DATE
+        showPage("slideshow");
+        startSlideshow();
+    } else {
+        document.getElementById("error").innerText="Wrong 😏 try again";
+    }
 }
 
-function showProposal() {
-    page2.classList.remove("active");
-    page3.classList.add("active");
+// SLIDESHOW
+let photos = [
+ "https://via.placeholder.com/300?text=Memory+1",
+ "https://via.placeholder.com/300?text=Memory+2",
+ "https://via.placeholder.com/300?text=Memory+3"
+];
+
+let captions = [
+ "Our first moment ❤️",
+ "Best day ever 💫",
+ "Forever us 💕"
+];
+
+let index = 0;
+
+function startSlideshow(){
+    setInterval(()=>{
+        document.getElementById("photo").src = photos[index];
+        document.getElementById("caption").innerText = captions[index];
+        index++;
+        if(index >= photos.length){
+            showEmotion();
+        }
+    },2000);
 }
 
-function moveNo() {
+// EMOTIONAL TEXT
+let emoText = ["We had ups…","We had downs…","But we never gave up ❤️"];
+let emoIndex = 0;
+
+function showEmotion(){
+    showPage("emotion");
+    let emo = document.getElementById("emotionText");
+
+    let interval = setInterval(()=>{
+        emo.innerText = emoText[emoIndex];
+        emoIndex++;
+        if(emoIndex >= emoText.length){
+            clearInterval(interval);
+            setTimeout(()=>showPage("proposal"),2000);
+        }
+    },2000);
+}
+
+// MOVE NO
+function moveNo(){
     let btn = document.getElementById("noBtn");
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
-
-    let txt = ["No 😭","Think again 😏","Try YES 😆"];
-    btn.innerText = txt[Math.floor(Math.random()*txt.length)];
+    btn.style.left = Math.random()*80 + "%";
+    btn.style.top = Math.random()*80 + "%";
 }
 
-function yesClicked() {
-    page3.classList.remove("active");
-    page4.classList.add("active");
+// YES CLICK
+function yesClicked(){
+    showPage("final");
 
     setInterval(()=>{
-        let heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerText="💖";
-        heart.style.left=Math.random()*100+"vw";
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerText="💖";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),3000);
     },200);
 }
+
+// LETTER
+function showLetter(){
+    showPage("letter");
+}
+
+// PAGE SWITCH
+function showPage(id){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
 </script>
 
 </body>
