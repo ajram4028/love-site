@@ -95,13 +95,13 @@ img {
 
 <!-- FINAL -->
 <div id="final" class="page">
-    <h1>💖 You are my forever 💖</h1>
-    <button onclick="showLetter()">One more surprise 💌</button>
+    <h1>💖 You are my forever Kuttyma💖</h1>
+    <button onclick="showLetter()">One more surprise D Battu 💌</button>
 </div>
 
 <!-- LETTER -->
 <div id="letter" class="page">
-    <h1>I Love You ❤️</h1>
+    <h1>I Love You So Much Annamica Devi  ❤️</h1>
     <p>You are the best thing that ever happened to me… forever yours 💖</p>
 </div>
 
@@ -137,7 +137,7 @@ function checkPass(){
 // SLIDESHOW
 let photos = [
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
-"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20am.jpeg",
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.43%20PM.jpeg"
 ];
     
@@ -184,10 +184,37 @@ function showEmotion(){
 }
 
 // MOVE NO
+let noCount = 0;
+
 function moveNo(){
     let btn = document.getElementById("noBtn");
+
+    let texts = [
+        "Are you sure? 😏",
+        "Think again 💭",
+        "Don't break my heart 💔",
+        "Wrong choice 😜",
+        "Try YES instead ❤️",
+        "You know the answer 😉"
+    ];
+
+    btn.innerText = texts[Math.floor(Math.random() * texts.length)];
+
     btn.style.left = Math.random()*80 + "%";
     btn.style.top = Math.random()*80 + "%";
+
+    noCount++;
+
+    if(noCount >= 6){
+        btn.style.display = "none";
+
+        let msg = document.createElement("h2");
+        msg.innerText = "Okay okay 😅 I removed the NO option... Now choose YES ❤️";
+        msg.style.marginTop = "20px";
+        msg.style.color = "pink";
+
+        document.body.appendChild(msg);
+    }
 }
 
 // YES CLICK
