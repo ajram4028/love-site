@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
 
 <style>
@@ -23,6 +24,19 @@ body {
     100% {background-position:0% 50%;}
 }
 
+/* STARS ✨ */
+.star {
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    animation: twinkle 2s infinite;
+}
+@keyframes twinkle {
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
 .page {
     display:none;
     height:100vh;
@@ -34,6 +48,16 @@ body {
 }
 .active { display:flex; }
 
+h1 {
+    text-shadow: 0 0 15px pink, 0 0 30px red;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
 button {
     padding:12px 25px;
     border:none;
@@ -43,17 +67,20 @@ button {
     cursor:pointer;
     transition:0.3s;
 }
-
 button:hover { transform:scale(1.1); }
 
 #yesBtn {
     background:#ff4d88;
-    color:white;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0%{box-shadow:0 0 5px pink;}
+    50%{box-shadow:0 0 20px red;}
+    100%{box-shadow:0 0 5px pink;}
 }
 
 #noBtn {
     background:#555;
-    color:white;
     position:absolute;
 }
 
@@ -61,53 +88,96 @@ img {
     width:260px;
     border-radius:20px;
     margin:10px;
+    animation: zoomFade 2s;
+}
+@keyframes zoomFade {
+    from {opacity:0; transform:scale(0.8);}
+    to {opacity:1; transform:scale(1);}
 }
 
+.heart {
+    position:fixed;
+    animation:float 4s linear infinite;
+}
+@keyframes float {
+    0% {transform:translateY(0);}
+    100% {transform:translateY(-100vh);}
+}
+
+/* CONFETTI */
+.confetti {
+    position:fixed;
+    width:8px;
+    height:8px;
+    animation: fall 3s linear infinite;
+}
+@keyframes fall {
+    0%{transform:translateY(-50px);}
+    100%{transform:translateY(100vh);}
+}
 </style>
 </head>
 
 <body>
 
-<div id="loading" class="page active">
-    <h1 id="loadingText"></h1>
-</div>
+<div id="loading" class="page active"><h1 id="loadingText"></h1></div>
 
 <div id="passwordPage" class="page">
-    <h1>Enter our special date 💕</h1>
-    <input type="password" id="pass" placeholder="DDMMYYYY">
-    <button onclick="checkPass()">Enter ❤️</button>
-    <p id="error"></p>
+<h1>Enter our special date 💕</h1>
+<input type="password" id="pass" placeholder="DDMMYYYY">
+<button onclick="checkPass()">Enter ❤️</button>
+<p id="error"></p>
 </div>
 
 <div id="slideshow" class="page">
-    <img id="photo">
-    <p id="caption"></p>
+<img id="photo"><p id="caption"></p>
 </div>
 
-<div id="emotion" class="page">
-    <h1 id="emotionText"></h1>
-</div>
+<div id="emotion" class="page"><h1 id="emotionText"></h1></div>
 
 <div id="proposal" class="page">
-    <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
-    <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
-    <button id="noBtn"
-        onmouseover="moveNo()"
-        ontouchstart="moveNo()"
-        onclick="moveNo()">NO 😈</button>
+<h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
+<button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+
+<!-- ✅ FIXED BUTTON -->
+<button id="noBtn"
+onmouseover="moveNo()"
+ontouchstart="moveNo()"
+onclick="moveNo()">NO 😈</button>
+
 </div>
 
 <div id="final" class="page">
-    <h1>💖 You are my forever Kuttyma 💖</h1>
-    <button onclick="showLetter()">One more surprise D Battu 💌</button>
+<h1>💖 You are my forever Kuttyma 💖</h1>
+<button onclick="showLetter()">One more surprise D Battu 💌</button>
 </div>
 
 <div id="letter" class="page">
-    <h1>I Love You So Much Annamica Devi ❤️</h1>
-    <p>You are the best thing that ever happened to me… forever yours 💖</p>
+<h1>I Love You So Much Annamica Devi ❤️</h1>
+<p>You are the best thing that ever happened to me… forever yours 💖</p>
 </div>
 
 <script>
+
+// STARS BACKGROUND ✨
+for(let i=0;i<80;i++){
+ let s=document.createElement("div");
+ s.className="star";
+ s.style.left=Math.random()*100+"vw";
+ s.style.top=Math.random()*100+"vh";
+ document.body.appendChild(s);
+}
+
+// CURSOR HEART TRAIL 💖
+document.addEventListener("mousemove",e=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerText="💖";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),1000);
+});
 
 // LOADING
 let text="Tomorrow… we complete 1000 days together 💕";
@@ -164,7 +234,7 @@ function startSlideshow(){
  },2000);
 }
 
-// EMOTION
+// TYPEWRITER EMOTION 💖
 let emoText=[
 "From strangers… to something beautiful 💫",
 "We laughed together 😄",
@@ -183,16 +253,27 @@ function showEmotion(){
  let emo=document.getElementById("emotionText");
 
  let interval=setInterval(()=>{
-  emo.innerText=emoText[emoIndex];
+  let txt=emoText[emoIndex];
+  let j=0;
+  let typer=setInterval(()=>{
+   emo.innerHTML+=txt[j];
+   j++;
+   if(j>=txt.length){
+    clearInterval(typer);
+   }
+  },30);
+
   emoIndex++;
   if(emoIndex>=emoText.length){
    clearInterval(interval);
-   setTimeout(()=>showPage("proposal"),2000);
+   setTimeout(()=>showPage("proposal"),4000);
+  } else {
+   setTimeout(()=>emo.innerHTML="",2000);
   }
- },2000);
+ },2500);
 }
 
-// NO BUTTON TEXTS 😈
+// ✅ NO BUTTON TEXTS
 let noTexts = [
 "1000 days ah waste panna poriya? 😭",
 "Think about our 1000 days 😏",
@@ -202,7 +283,7 @@ let noTexts = [
 "Try YES kuttyma ❤️"
 ];
 
-// INITIAL RANDOM TEXT
+// INITIAL TEXT
 document.getElementById("noBtn").innerText =
 noTexts[Math.floor(Math.random() * noTexts.length)];
 
@@ -213,31 +294,33 @@ function moveNo(){
 
  btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
 
- btn.style.left=Math.random()*(window.innerWidth-120)+"px";
- btn.style.top=Math.random()*(window.innerHeight-60)+"px";
+ let maxX = window.innerWidth - btn.offsetWidth;
+ let maxY = window.innerHeight - btn.offsetHeight;
+
+ btn.style.left = Math.random() * maxX + "px";
+ btn.style.top = Math.random() * maxY + "px";
 
  noCount++;
 
- if(noCount>=6){
-  btn.style.display="none";
-
-  let msg=document.createElement("h2");
-  msg.innerText="Okay okay 😅 NO option removed… after 1000 days only YES allowed ❤️";
-  msg.style.color="pink";
-  document.body.appendChild(msg);
- }
+ if(noCount>=6) btn.style.display="none";
 }
 
-// YES CLICK
+// YES CLICK 💥
 function yesClicked(){
  showPage("final");
 
- document.querySelector("#final h1").innerText =
- "💖 Let’s make it not just 1000 days… but a lifetime together Kuttyma 💖";
+ for(let i=0;i<80;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),3000);
+ }
 }
 
+// NAV
 function showLetter(){ showPage("letter"); }
-
 function showPage(id){
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  document.getElementById(id).classList.add("active");
