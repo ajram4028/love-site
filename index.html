@@ -265,7 +265,7 @@ let photos=[
 "photo2.jpg",
 "photo3.jpg"
 ];
-  
+
 let captions=[
 "Our first memory ❤️",
 "The best day with you 💫",
@@ -276,7 +276,6 @@ let index=0;
 
 function startSlideshow(){
 let slide=setInterval(()=>{
-
 document.getElementById("photo").src = photos[index];
 document.getElementById("caption").innerText = captions[index];
 
@@ -401,6 +400,53 @@ function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
+
+/* FLOATING LOVE MESSAGES */
+
+let loveMsgs=[
+"I love you Annamica ❤️",
+"My forever Battuma 💍",
+"Chello 😘",
+"My thango 💖",
+"Kuttachii 😍",
+"You are my world 🌍",
+"Sidu moonji 😂❤️",
+"My kovakaari 😜",
+"My lovable person 💕",
+"1000 days strong with you 💞",
+"I fall for you every day 💖",
+"Nee dhan en life ❤️",
+"Always yours kuttyma 😘",
+"My happiness = you 💕",
+"Forever us 💑",
+"Unnai romba love panren ❤️",
+"En uyir nee dhaan 💖"
+];
+
+setInterval(()=>{
+let msg=document.createElement("div");
+
+msg.innerText=loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
+
+msg.style.position="fixed";
+msg.style.left=Math.random()*100+"vw";
+msg.style.top="100vh";
+msg.style.color="pink";
+msg.style.fontSize="14px";
+msg.style.pointerEvents="none";
+
+document.body.appendChild(msg);
+
+let move=setInterval(()=>{
+msg.style.top=(msg.offsetTop-2)+"px";
+},20);
+
+setTimeout(()=>{
+clearInterval(move);
+msg.remove();
+},4000);
+
+},1500);
 
 </script>
 
