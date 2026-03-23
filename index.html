@@ -276,14 +276,17 @@ let index=0;
 
 function startSlideshow(){
 let slide=setInterval(()=>{
-document.getElementById("photo").src=photos[index];
-document.getElementById("caption").innerText=captions[index];
+
+document.getElementById("photo").src = photos[index];
+document.getElementById("caption").innerText = captions[index];
+
 index++;
 
-if(index>=photos.length){
+if(index === photos.length){
 clearInterval(slide);
-showEmotion();
+setTimeout(()=>showEmotion(),2000);
 }
+
 },2000);
 }
 
