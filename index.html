@@ -7,11 +7,20 @@
 <style>
 body {
     margin:0;
-    background:black;
-    color:white;
     font-family:Arial;
     text-align:center;
     overflow:hidden;
+    color:white;
+
+    background: linear-gradient(270deg, #1a001a, #330033, #660033, #330033);
+    background-size: 800% 800%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
 }
 
 .page {
@@ -33,12 +42,15 @@ button {
     cursor:pointer;
 }
 
-#noBtn {
-    position:absolute;
-    background:gray;
+#yesBtn {
+    background: #ff4d88;
+    color:white;
 }
 
-#yesBtn { background:pink; }
+#noBtn {
+    background: #555;
+    color:white;
+}
 
 img {
     width:250px;
