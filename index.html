@@ -44,8 +44,6 @@ img {
     width:250px;
     border-radius:20px;
     margin:10px;
-    filter:none;
-    opacity:1;
 }
 
 .heart {
@@ -88,27 +86,27 @@ img {
 
 <!-- PROPOSAL -->
 <div id="proposal" class="page">
-    <h1>Annamica… Will you marry me? 💍</h1>
+    <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
     <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()">NO 😈</button>
 </div>
 
 <!-- FINAL -->
 <div id="final" class="page">
-    <h1>💖 You are my forever Kuttyma💖</h1>
+    <h1>💖 You are my forever Kuttyma 💖</h1>
     <button onclick="showLetter()">One more surprise D Battu 💌</button>
 </div>
 
 <!-- LETTER -->
 <div id="letter" class="page">
-    <h1>I Love You So Much Annamica Devi  ❤️</h1>
+    <h1>I Love You So Much Annamica Devi ❤️</h1>
     <p>You are the best thing that ever happened to me… forever yours 💖</p>
 </div>
 
 <script>
 
-// LOADING TEXT
-let text = "Loading your memories...";
+// LOADING TEXT 💕
+let text = "Tomorrow… we complete 1000 days together 💕";
 let i = 0;
 let loadingText = document.getElementById("loadingText");
 
@@ -118,7 +116,10 @@ let typing = setInterval(() => {
     if(i >= text.length){
         clearInterval(typing);
         setTimeout(()=>{
-            showPage("passwordPage");
+            loadingText.innerHTML = "1000 days of love… fights… memories… and us ❤️";
+            setTimeout(()=>{
+                showPage("passwordPage");
+            },2000);
         },1000);
     }
 },50);
@@ -126,7 +127,7 @@ let typing = setInterval(() => {
 // PASSWORD
 function checkPass(){
     let val = document.getElementById("pass").value;
-    if(val === "29062023"){ // CHANGE THIS DATE
+    if(val === "29062023"){
         showPage("slideshow");
         startSlideshow();
     } else {
@@ -140,7 +141,7 @@ let photos = [
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.43%20PM.jpeg"
 ];
-    
+
 let captions = [
 "Our first memory ❤️",
 "The best day with you 💫",
@@ -158,15 +159,25 @@ function startSlideshow(){
         index++;
 
         if(index >= photos.length){
-            clearInterval(slide);   // stop slideshow
-            showEmotion();          // go to next page
+            clearInterval(slide);
+            showEmotion();
         }
 
     },2000);
 }
 
-// EMOTIONAL TEXT
-let emoText = ["We had ups…","We had downs…","But we never gave up ❤️"];
+// EMOTIONAL TEXT 💖
+let emoText = [
+"From strangers… to something beautiful 💫",
+"We laughed together 😄",
+"We cried sometimes 😢",
+"We fought… but never gave up ❤️",
+"And now… we are about to complete 1000 days 💕",
+"And still… I fall for you every single day 💖",
+"So before we reach 1000 days…",
+"I have one question for you… 💍"
+];
+
 let emoIndex = 0;
 
 function showEmotion(){
@@ -183,19 +194,19 @@ function showEmotion(){
     },2000);
 }
 
-// MOVE NO
+// NO BUTTON 😈
 let noCount = 0;
 
 function moveNo(){
     let btn = document.getElementById("noBtn");
 
     let texts = [
-        "Are you sure? 😏",
-        "Think again 💭",
+        "1000 days ah waste panna poriya? 😭",
+        "Think about our 1000 days 😏",
         "Don't break my heart 💔",
         "Wrong choice 😜",
-        "Try YES instead ❤️",
-        "You know the answer 😉"
+        "After 1000 days still NO ah? 😆",
+        "Try YES kuttyma ❤️"
     ];
 
     btn.innerText = texts[Math.floor(Math.random() * texts.length)];
@@ -209,7 +220,7 @@ function moveNo(){
         btn.style.display = "none";
 
         let msg = document.createElement("h2");
-        msg.innerText = "Okay okay 😅 I removed the NO option... Now choose YES ❤️";
+        msg.innerText = "Okay okay 😅 NO option removed… after 1000 days only YES allowed ❤️";
         msg.style.marginTop = "20px";
         msg.style.color = "pink";
 
@@ -217,9 +228,12 @@ function moveNo(){
     }
 }
 
-// YES CLICK
+// YES CLICK 💕
 function yesClicked(){
     showPage("final");
+
+    document.querySelector("#final h1").innerText =
+    "💖 Let’s make it not just 1000 days… but a lifetime together Kuttyma 💖";
 
     setInterval(()=>{
         let h=document.createElement("div");
