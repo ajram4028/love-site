@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
 
 <style>
@@ -114,10 +115,49 @@ img {
     0%{transform:translateY(-50px);}
     100%{transform:translateY(100vh);}
 }
+
+/* MOBILE FIX */
+@media (max-width:600px){
+
+.page{
+padding:20px;
+}
+
+h1{
+font-size:24px;
+line-height:1.4;
+}
+
+p{
+font-size:16px;
+padding:0 10px;
+}
+
+button{
+font-size:16px;
+padding:10px 20px;
+}
+
+img{
+width:90%;
+max-width:320px;
+height:auto;
+}
+
+input{
+font-size:16px;
+padding:8px;
+width:80%;
+}
+
+}
 </style>
 </head>
 
 <body>
+
+<!-- KEEP YOUR ENTIRE HTML AND JAVASCRIPT EXACTLY SAME BELOW -->
+
 
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
 
@@ -270,14 +310,27 @@ function showEmotion(){
 
 // NO BUTTON TEXTS
 let noTexts = [
-"1000 days ah waste panna poriya? 😭",
-"Think about our 1000 days 😏",
-"Don't break my heart 💔",
-"Wrong choice 😜",
-"After 1000 days still NO ah? 😆",
-"Try YES kuttyma ❤️"
+"Heyyy venam d 😭 touch pannadha...",
+"Adei 😳 enna panra… NO ah press panna poriya?!",
+"Thodadha… please da 🥺",
+"Nee idha press panna naan hurt aaiduven 💔",
+"Heyyy Annamica 😭 think pannitu press pannu...",
+"1000 days ku apramum NO ah? 😡",
+"Idha press panna adichiruven 😤 (joke da 😘)",
+"Kuttyma 😭 don’t do this to me...",
+"Nee YES dhaan press pannuva nu namburen ❤️",
+"Adei chello 😏 wrong button paathu iruka...",
+"Thappu button idhu 😜 YES pakkam pogu...",
+"Heyyy kovakaari 😆 calm ah iru… YES press pannu",
+"Sidu moonji 😂 idhu unaku set aagathu…",
+"En thango 💖 idhu unaku illa… YES dhaan",
+"Last warning 😏 NO press panna allow illa...",
+"Heyyyy 😭 naan romba serious ah kekuren...",
+"Please d 🥺 idha vittutu YES pannu...",
+"Un answer already YES dhaan 😘",
+"En world ah ipdi pannadha 😭",
+"Okay fine 😤 NO option soon disappear aagum 😈"
 ];
-
 let noCount=0;
 function moveNo(){
  let btn=document.getElementById("noBtn");
@@ -327,7 +380,25 @@ document.addEventListener("dblclick", e => {
 });
 
 // 💕 FLOATING LOVE TEXTS
-let loveMsgs = ["I love you ❤️","My forever 💍","Kuttyma 😘","1000 days strong 💕"];
+let loveMsgs = [
+"I love you Annamica ❤️",
+"My forever Battuma 💍",
+"Chello 😘",
+"My thango 💖",
+"Kuttachii 😍",
+"You are my world 🌍",
+"Sidu moonji 😂❤️",
+"My kovakaari 😜",
+"My lovable person 💕",
+"1000 days strong with you 💞",
+"I fall for you every day 💖",
+"Nee dhan en life ❤️",
+"Always yours kuttyma 😘",
+"My happiness = you 💕",
+"Forever us 💑",
+"Unnai romba love panren ❤️",
+"En uyir nee dhaan 💖"
+];
 
 setInterval(()=>{
  let msg=document.createElement("div");
@@ -353,4 +424,4 @@ setInterval(()=>{
 </script>
 
 </body>
-</html>  
+</html>
