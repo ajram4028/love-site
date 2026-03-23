@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
 
 <style>
@@ -24,6 +23,7 @@ body {
     100% {background-position:0% 50%;}
 }
 
+/* STARS ✨ */
 .star {
     position:fixed;
     width:2px;
@@ -81,7 +81,6 @@ button:hover { transform:scale(1.1); }
 #noBtn {
     background:#555;
     position:absolute;
-    color:white;
 }
 
 img {
@@ -104,6 +103,7 @@ img {
     100% {transform:translateY(-100vh);}
 }
 
+/* CONFETTI */
 .confetti {
     position:fixed;
     width:8px;
@@ -120,7 +120,6 @@ img {
 <body>
 
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
-
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
 <input type="password" id="pass" placeholder="DDMMYYYY">
@@ -137,10 +136,7 @@ img {
 <div id="proposal" class="page">
 <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
 <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
-<button id="noBtn"
-onmouseover="moveNo()"
-ontouchstart="moveNo()"
-onclick="moveNo()">NO 😈</button>
+<button id="noBtn" onmouseover="moveNo()">NO 😈</button>
 </div>
 
 <div id="final" class="page">
@@ -155,7 +151,7 @@ onclick="moveNo()">NO 😈</button>
 
 <script>
 
-// STARS
+// STARS BACKGROUND ✨
 for(let i=0;i<80;i++){
  let s=document.createElement("div");
  s.className="star";
@@ -163,6 +159,17 @@ for(let i=0;i<80;i++){
  s.style.top=Math.random()*100+"vh";
  document.body.appendChild(s);
 }
+
+// CURSOR HEART TRAIL 💖
+document.addEventListener("mousemove",e=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerText="💖";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),1000);
+});
 
 // LOADING
 let text="Tomorrow… we complete 1000 days together 💕";
@@ -187,6 +194,8 @@ function checkPass(){
  if(val==="29062023"){
   showPage("slideshow");
   startSlideshow();
+ } else {
+  document.getElementById("error").innerText="Wrong 😏 try again";
  }
 }
 
@@ -217,7 +226,7 @@ function startSlideshow(){
  },2000);
 }
 
-// EMOTION
+// TYPEWRITER EMOTION 💖
 let emoText=[
 "From strangers… to something beautiful 💫",
 "We laughed together 😄",
@@ -236,60 +245,56 @@ function showEmotion(){
  let emo=document.getElementById("emotionText");
 
  let interval=setInterval(()=>{
-  emo.innerText=emoText[emoIndex];
+  let txt=emoText[emoIndex];
+  let j=0;
+  let typer=setInterval(()=>{
+   emo.innerHTML+=txt[j];
+   j++;
+   if(j>=txt.length){
+    clearInterval(typer);
+   }
+  },30);
+
   emoIndex++;
   if(emoIndex>=emoText.length){
    clearInterval(interval);
-   setTimeout(()=>showPage("proposal"),2000);
+   setTimeout(()=>showPage("proposal"),4000);
+  } else {
+   setTimeout(()=>emo.innerHTML="",2000);
   }
- },2000);
+ },2500);
 }
 
-// ✅ NO BUTTON TEXTS
-let noTexts = [
-"1000 days ah waste panna poriya? 😭",
-"Think about our 1000 days 😏",
-"Don't break my heart 💔",
-"Wrong choice 😜",
-"After 1000 days still NO ah? 😆",
-"Try YES kuttyma ❤️"
-];
-
+// NO BUTTON
 let noCount=0;
-
 function moveNo(){
  let btn=document.getElementById("noBtn");
-
- btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
-
- let maxX = window.innerWidth - btn.offsetWidth;
- let maxY = window.innerHeight - btn.offsetHeight;
-
- btn.style.left = Math.random() * maxX + "px";
- btn.style.top = Math.random() * maxY + "px";
-
+ btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+ btn.style.top=Math.random()*(window.innerHeight-50)+"px";
  noCount++;
-
  if(noCount>=6) btn.style.display="none";
 }
 
-// ✅ SET TEXT ONLY WHEN PROPOSAL OPENS
-function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
+// YES CLICK 💥
+function yesClicked(){
+ showPage("final");
 
- if(id==="proposal"){
-   let btn=document.getElementById("noBtn");
-   btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+ for(let i=0;i<80;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),3000);
  }
 }
 
-// YES CLICK
-function yesClicked(){
- showPage("final");
-}
-
+// NAV
 function showLetter(){ showPage("letter"); }
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+}
 
 </script>
 
