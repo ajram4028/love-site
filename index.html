@@ -120,6 +120,7 @@ img {
 <body>
 
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
+
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
 <input type="password" id="pass" placeholder="DDMMYYYY">
@@ -265,10 +266,24 @@ function showEmotion(){
  },2500);
 }
 
+// ✅ ADDED TEXTS ONLY
+let noTexts = [
+"1000 days ah waste panna poriya? 😭",
+"Think about our 1000 days 😏",
+"Don't break my heart 💔",
+"Wrong choice 😜",
+"After 1000 days still NO ah? 😆",
+"Try YES kuttyma ❤️"
+];
+
 // NO BUTTON
 let noCount=0;
 function moveNo(){
  let btn=document.getElementById("noBtn");
+
+ // ✅ ONLY ADDITION
+ btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+
  btn.style.left=Math.random()*(window.innerWidth-100)+"px";
  btn.style.top=Math.random()*(window.innerHeight-50)+"px";
  noCount++;
