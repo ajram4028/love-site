@@ -26,8 +26,8 @@ body {
 .page {
     display:none;
     height:100vh;
-    width:100vw;   /* ADD THIS */
-    position:relative;  /* ADD THIS */
+    width:100vw;
+    position:relative;
     justify-content:center;
     align-items:center;
     flex-direction:column;
@@ -51,6 +51,7 @@ button {
 #noBtn {
     background: #555;
     color:white;
+    position: absolute;  /* ✅ FIXED */
 }
 
 img {
@@ -73,12 +74,10 @@ img {
 
 <body>
 
-<!-- LOADING -->
 <div id="loading" class="page active">
     <h1 id="loadingText"></h1>
 </div>
 
-<!-- PASSWORD -->
 <div id="passwordPage" class="page">
     <h1>Enter our special date 💕</h1>
     <input type="password" id="pass" placeholder="DDMMYYYY">
@@ -86,31 +85,26 @@ img {
     <p id="error"></p>
 </div>
 
-<!-- SLIDESHOW -->
 <div id="slideshow" class="page">
     <img id="photo" src="">
     <p id="caption"></p>
 </div>
 
-<!-- EMOTIONAL -->
 <div id="emotion" class="page">
     <h1 id="emotionText"></h1>
 </div>
 
-<!-- PROPOSAL -->
 <div id="proposal" class="page">
     <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
     <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
     <button id="noBtn" onmouseover="moveNo()">NO 😈</button>
 </div>
 
-<!-- FINAL -->
 <div id="final" class="page">
     <h1>💖 You are my forever Kuttyma 💖</h1>
     <button onclick="showLetter()">One more surprise D Battu 💌</button>
 </div>
 
-<!-- LETTER -->
 <div id="letter" class="page">
     <h1>I Love You So Much Annamica Devi ❤️</h1>
     <p>You are the best thing that ever happened to me… forever yours 💖</p>
@@ -118,7 +112,6 @@ img {
 
 <script>
 
-// LOADING TEXT 💕
 let text = "Tomorrow… we complete 1000 days together 💕";
 let i = 0;
 let loadingText = document.getElementById("loadingText");
@@ -137,7 +130,6 @@ let typing = setInterval(() => {
     }
 },50);
 
-// PASSWORD
 function checkPass(){
     let val = document.getElementById("pass").value;
     if(val === "29062023"){
@@ -148,7 +140,6 @@ function checkPass(){
     }
 }
 
-// SLIDESHOW
 let photos = [
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
@@ -165,21 +156,16 @@ let index = 0;
 
 function startSlideshow(){
     let slide = setInterval(()=>{
-
         document.getElementById("photo").src = photos[index];
         document.getElementById("caption").innerText = captions[index];
-
         index++;
-
         if(index >= photos.length){
             clearInterval(slide);
             showEmotion();
         }
-
     },2000);
 }
 
-// EMOTIONAL TEXT 💖
 let emoText = [
 "From strangers… to something beautiful 💫",
 "We laughed together 😄",
@@ -207,7 +193,6 @@ function showEmotion(){
     },2000);
 }
 
-// NO BUTTON 😈
 let noCount = 0;
 
 function moveNo(){
@@ -224,8 +209,9 @@ function moveNo(){
 
     btn.innerText = texts[Math.floor(Math.random() * texts.length)];
 
-  btn.style.left = Math.random()*(window.innerWidth - 100) + "px";
-btn.style.top = Math.random()*(window.innerHeight - 50) + "px";
+    btn.style.left = Math.random()*(window.innerWidth - 100) + "px";
+    btn.style.top = Math.random()*(window.innerHeight - 50) + "px";
+
     noCount++;
 
     if(noCount >= 6){
@@ -240,7 +226,6 @@ btn.style.top = Math.random()*(window.innerHeight - 50) + "px";
     }
 }
 
-// YES CLICK 💕
 function yesClicked(){
     showPage("final");
 
@@ -257,12 +242,10 @@ function yesClicked(){
     },200);
 }
 
-// LETTER
 function showLetter(){
     showPage("letter");
 }
 
-// PAGE SWITCH
 function showPage(id){
     document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
     document.getElementById(id).classList.add("active");
