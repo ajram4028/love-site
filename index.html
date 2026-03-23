@@ -151,9 +151,11 @@ function startSlideshow(){
     setInterval(()=>{
         document.getElementById("photo").src = photos[index];
         document.getElementById("caption").innerText = captions[index];
+
         index++;
+
         if(index >= photos.length){
-            showEmotion();
+            index = 0;
         }
     },2000);
 }
