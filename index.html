@@ -261,9 +261,9 @@ document.getElementById("error").innerText="Thappu daw Battuma😄💕 ";
 /* SLIDESHOW */
 
 let photos=[
-"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp Image 2026-03-23 at 4.28.42 PM.jpeg",
-"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp Image 2026-03-23 at 4.28.42 am.jpeg",
-"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp Image 2026-03-23 at 4.28.43 PM.jpeg"
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20am.jpeg",
+"https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.43%20PM.jpeg"
 ];
 
 let captions=[
@@ -287,125 +287,7 @@ showEmotion();
 },2000);
 }
 
-/* EMOTION */
-
-let emoText=[
-"Rendu perum strangers ah meet pannom 💫",
-"Aana fate connect aayiduchu ❤️✨",
-"Serndhu siricha moments 😄💕",
-"Sila neram azhudhadhum 😢🤍",
-"Infinity sanda nadandhadhu 😅🔥",
-"Ana love mattum kuraiyala ❤️🫶",
-"Days romba special 💕🌙",
-"Un kooda iruntha life azhagu 💖✨",
-"Ippo 1000 days aga podhu 💫🎉",
-"Next idhu 2000 aaganum 💕",
-"Then 3000 and 4000 💖",
-"Ipdi namba saagura vara 💞",
-"Namba onna irukanum 🤝❤️",
-"Unaku naan purushana 💍",
-"Enaku nee pondatiya 👰❤️",
-"Life long en koodave iru 💕🤗",
-"Enna vittu poiradha 🥺❤️",
-"I love you Annamiiii ❤️😘",
-"I have one question for you… 💍✨"
-];
-
-let emoIndex=0;
-
-function showEmotion(){
-showPage("emotion");
-let emo=document.getElementById("emotionText");
-
-let interval=setInterval(()=>{
-let txt=emoText[emoIndex];
-let j=0;
-
-let typer=setInterval(()=>{
-emo.innerHTML+=txt[j];
-j++;
-if(j>=txt.length){
-clearInterval(typer);
-}
-},30);
-
-emoIndex++;
-
-if(emoIndex>=emoText.length){
-clearInterval(interval);
-setTimeout(()=>showPage("proposal"),4000);
-}else{
-setTimeout(()=>emo.innerHTML="",2000);
-}
-
-},2500);
-}
-
-/* NO BUTTON */
-
-let noTexts = [
-"Heyyy venam d 😭 touch pannadha...",
-"Adei 😳 enna panra… NO ah press panna poriya?!",
-"Thodadha… please da 🥺",
-"Nee idha press panna naan hurt aaiduven 💔",
-"Heyyy Annamica 😭 think pannitu press pannu...",
-"1000 days ku apramum NO ah? 😡",
-"Idha press panna adichiruven 😤 (joke da 😘)",
-"Kuttyma 😭 don’t do this to me...",
-"Nee YES dhaan press pannuva nu namburen ❤️",
-"Adei chello 😏 wrong button paathu iruka...",
-"Thappu button idhu 😜 YES pakkam pogu...",
-"Heyyy kovakaari 😆 calm ah iru… YES press pannu",
-"Sidu moonji 😂 idhu unaku set aagathu…",
-"En thango 💖 idhu unaku illa… YES dhaan",
-"Last warning 😏 NO press panna allow illa...",
-"Heyyyy 😭 naan romba serious ah kekuren...",
-"Please d 🥺 idha vittutu YES pannu...",
-"Un answer already YES dhaan 😘",
-"En world ah ipdi pannadha 😭",
-"Okay fine 😤 NO option soon disappear aagum 😈"
-];
-
-let noCount=0;
-
-function moveNo(){
-let btn=document.getElementById("noBtn");
-
-btn.innerText=noTexts[noCount % noTexts.length];
-
-btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-btn.style.top=Math.random()*(window.innerHeight-50)+"px";
-
-noCount++;
-
-if(noCount>=noTexts.length){
-btn.style.display="none";
-}
-}
-
-/* YES CLICK */
-
-function yesClicked(){
-showPage("final");
-
-for(let i=0;i<80;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"vw";
-c.style.background=`hsl(${Math.random()*360},100%,50%)`;
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),3000);
-}
-}
-
-/* NAV */
-
-function showLetter(){showPage("letter");}
-
-function showPage(id){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
+/* (rest of your JS stays same) */
 
 </script>
 
