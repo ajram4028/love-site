@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- MOBILE SCREEN FIX -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For You ❤️</title>
@@ -12,7 +13,7 @@ body {
     margin:0;
     font-family:Arial;
     text-align:center;
-    overflow:hidden;
+   overflow:hidden;
     color:white;
 
     background: linear-gradient(270deg, #0a0010, #200020, #400020);
@@ -26,6 +27,7 @@ body {
     100% {background-position:0% 50%;}
 }
 
+/* STARS ✨ */
 .star {
     position:fixed;
     width:2px;
@@ -33,7 +35,6 @@ body {
     background:white;
     animation: twinkle 2s infinite;
 }
-
 @keyframes twinkle {
     0%,100%{opacity:0.2;}
     50%{opacity:1;}
@@ -48,7 +49,6 @@ body {
     align-items:center;
     flex-direction:column;
 }
-
 .active { display:flex; }
 
 h1 {
@@ -70,14 +70,12 @@ button {
     cursor:pointer;
     transition:0.3s;
 }
-
 button:hover { transform:scale(1.1); }
 
 #yesBtn {
     background:#ff4d88;
     animation: pulse 1.5s infinite;
 }
-
 @keyframes pulse {
     0%{box-shadow:0 0 5px pink;}
     50%{box-shadow:0 0 20px red;}
@@ -111,6 +109,7 @@ img {
     100% {transform:translateY(-100vh);}
 }
 
+/* CONFETTI */
 .confetti {
     position:fixed;
     width:8px;
@@ -123,15 +122,33 @@ img {
     100%{transform:translateY(100vh);}
 }
 
+/* 📱 MOBILE RESPONSIVE FIX */
 @media (max-width:600px){
 
-.page{padding:20px;}
+.page{
+padding:20px;
+}
 
-h1{font-size:24px;line-height:1.4;}
+h1{
+font-size:24px;
+line-height:1.4;
+}
 
-button{font-size:16px;padding:10px 20px;}
+p{
+font-size:16px;
+padding:0 10px;
+}
 
-img{width:90%;max-width:320px;height:auto;}
+button{
+font-size:16px;
+padding:10px 20px;
+}
+
+img{
+width:90%;
+max-width:320px;
+height:auto;
+}
 
 input{
 font-size:16px;
@@ -156,7 +173,7 @@ outline:none;
 
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
-<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
+<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric" onkeypress="if(event.key==='Enter'){checkPass()}">
 <button type="button" onclick="checkPass()">Enter ❤️</button>
 <p id="error"></p>
 </div>
@@ -180,11 +197,9 @@ outline:none;
 
 <div id="letter" class="page">
 <h1>I Love You So Much Annamica Devi ❤️</h1>
-<p>
-Un kooda irundha ovvoru naalum enaku romba special 💖  
-Sirippum irundhuchu, sandaiyum irundhuchu 😄😅  
-Aana ellathukum mela un mela irukra love mattum koraiyave illa 💖
-</p>
+<p>  Un kooda irundha ovvoru naalum enaku romba special 💖
+Sirippum irundhuchu, sandaiyum irundhuchu 😄😅
+Aana ellathukum mela un mela Irukra Andha love mattum Koranchadhey illa, Koraiyavum koraiyadhu💖</p>
 </div>
 
 <script>
@@ -192,10 +207,13 @@ Aana ellathukum mela un mela irukra love mattum koraiyave illa 💖
 // MUSIC MOBILE FIX
 document.addEventListener("click", function(){
   let music = document.getElementById("bgMusic");
-  if(music.paused){ music.play(); }
+  if(music.paused){
+    music.play();
+  }
 });
+// (YOUR ORIGINAL CODE — UNCHANGED)
 
-// STARS
+// STARS BACKGROUND ✨
 for(let i=0;i<80;i++){
  let s=document.createElement("div");
  s.className="star";
@@ -204,24 +222,15 @@ for(let i=0;i<80;i++){
  document.body.appendChild(s);
 }
 
-/* FIXED HEART TRAIL (WORKS ON MOBILE + DESKTOP) */
-
-function createHeart(x,y){
+// CURSOR HEART TRAIL 💖
+document.addEventListener("mousemove",e=>{
  let h=document.createElement("div");
  h.className="heart";
  h.innerText="💖";
- h.style.left=x+"px";
- h.style.top=y+"px";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),1000);
-}
-
-document.addEventListener("mousemove",e=>{
- createHeart(e.clientX,e.clientY);
-});
-
-document.addEventListener("touchmove",e=>{
- createHeart(e.touches[0].clientX,e.touches[0].clientY);
 });
 
 // LOADING
