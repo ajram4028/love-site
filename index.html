@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For You ❤️</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -14,7 +14,7 @@ text-align:center;
 overflow-x:hidden;
 color:white;
 
-background:linear-gradient(270deg,#0a0010,#200020,#400020);
+background: linear-gradient(270deg,#0a0010,#200020,#400020);
 background-size:800% 800%;
 animation:gradientMove 12s ease infinite;
 }
@@ -25,6 +25,7 @@ animation:gradientMove 12s ease infinite;
 100%{background-position:0% 50%;}
 }
 
+/* STARS */
 .star{
 position:fixed;
 width:2px;
@@ -122,6 +123,7 @@ animation:fall 3s linear infinite;
 100%{transform:translateY(100vh);}
 }
 
+/* MOBILE */
 @media(max-width:600px){
 
 .page{padding:20px;}
@@ -153,20 +155,25 @@ outline:none;
 <source src="sajde-pendujattcomse-1_pGF15voL.mp3" type="audio/mpeg">
 </audio>
 
-<div id="loading" class="page active"><h1 id="loadingText"></h1></div>
+<div id="loading" class="page active">
+<h1 id="loadingText"></h1>
+</div>
 
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
-<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
+<input type="tel" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
 <button type="button" onclick="checkPass()">Enter ❤️</button>
 <p id="error"></p>
 </div>
 
 <div id="slideshow" class="page">
-<img id="photo"><p id="caption"></p>
+<img id="photo">
+<p id="caption"></p>
 </div>
 
-<div id="emotion" class="page"><h1 id="emotionText"></h1></div>
+<div id="emotion" class="page">
+<h1 id="emotionText"></h1>
+</div>
 
 <div id="proposal" class="page">
 <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
@@ -205,7 +212,7 @@ s.style.top=Math.random()*100+"vh";
 document.body.appendChild(s);
 }
 
-/* HEART TRAIL FIX (MOUSE + TOUCH) */
+/* HEART TRAIL (MOUSE + TOUCH) */
 
 function createHeart(x,y){
 let h=document.createElement("div");
@@ -232,16 +239,19 @@ let i=0;
 let loadingText=document.getElementById("loadingText");
 
 let typing=setInterval(()=>{
+
 loadingText.innerHTML+=text[i];
 i++;
 
 if(i>=text.length){
+
 clearInterval(typing);
 
 setTimeout(()=>{
 loadingText.innerHTML="1000 days together… but I still want a lifetime with you ❤️";
 setTimeout(()=>showPage("passwordPage"),2000);
 },1000);
+
 }
 
 },50);
@@ -249,14 +259,16 @@ setTimeout(()=>showPage("passwordPage"),2000);
 /* PASSWORD */
 
 function checkPass(){
+
 let val=document.getElementById("pass").value;
 
 if(val==="29062023"){
 showPage("slideshow");
 startSlideshow();
 }else{
-document.getElementById("error").innerText="Thappu daw Battuma😄💕";
+document.getElementById("error").innerText="Thappu daw Battuma😄💕 ";
 }
+
 }
 
 /* SLIDESHOW */
