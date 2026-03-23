@@ -2,153 +2,137 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<!-- MOBILE SCREEN FIX -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For You ❤️</title>
 
 <style>
-body {
-    margin:0;
-    font-family:Arial;
-    text-align:center;
-   overflow:hidden;
-    color:white;
 
-    background: linear-gradient(270deg, #0a0010, #200020, #400020);
-    background-size: 800% 800%;
-    animation: gradientMove 12s ease infinite;
-}
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+overflow-x:hidden;
+color:white;
 
-@keyframes gradientMove {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
+background:linear-gradient(270deg,#0a0010,#200020,#400020);
+background-size:800% 800%;
+animation:gradientMove 12s ease infinite;
 }
 
-/* STARS ✨ */
-.star {
-    position:fixed;
-    width:2px;
-    height:2px;
-    background:white;
-    animation: twinkle 2s infinite;
-}
-@keyframes twinkle {
-    0%,100%{opacity:0.2;}
-    50%{opacity:1;}
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-.page {
-    display:none;
-    height:100vh;
-    width:100vw;
-    position:relative;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-}
-.active { display:flex; }
-
-h1 {
-    text-shadow: 0 0 15px pink, 0 0 30px red;
-    animation: fadeIn 2s;
+.star{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite;
 }
 
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(20px);}
-    to {opacity:1; transform:translateY(0);}
+@keyframes twinkle{
+0%,100%{opacity:0.2;}
+50%{opacity:1;}
 }
-
-button {
-    padding:12px 25px;
-    border:none;
-    border-radius:25px;
-    font-size:18px;
-    margin:10px;
-    cursor:pointer;
-    transition:0.3s;
-}
-button:hover { transform:scale(1.1); }
-
-#yesBtn {
-    background:#ff4d88;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-    0%{box-shadow:0 0 5px pink;}
-    50%{box-shadow:0 0 20px red;}
-    100%{box-shadow:0 0 5px pink;}
-}
-
-#noBtn {
-    background:#555;
-    position:absolute;
-}
-
-img {
-    width:260px;
-    border-radius:20px;
-    margin:10px;
-    animation: zoomFade 2s;
-}
-
-@keyframes zoomFade {
-    from {opacity:0; transform:scale(0.8);}
-    to {opacity:1; transform:scale(1);}
-}
-
-.heart {
-    position:fixed;
-    animation:float 4s linear infinite;
-}
-
-@keyframes float {
-    0% {transform:translateY(0);}
-    100% {transform:translateY(-100vh);}
-}
-
-/* CONFETTI */
-.confetti {
-    position:fixed;
-    width:8px;
-    height:8px;
-    animation: fall 3s linear infinite;
-}
-
-@keyframes fall {
-    0%{transform:translateY(-50px);}
-    100%{transform:translateY(100vh);}
-}
-
-/* 📱 MOBILE RESPONSIVE FIX */
-@media (max-width:600px){
 
 .page{
-padding:20px;
+display:none;
+height:100vh;
+width:100vw;
+position:relative;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
+
+.active{display:flex;}
 
 h1{
-font-size:24px;
-line-height:1.4;
+text-shadow:0 0 15px pink,0 0 30px red;
+animation:fadeIn 2s;
 }
 
-p{
-font-size:16px;
-padding:0 10px;
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 button{
-font-size:16px;
-padding:10px 20px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{transform:scale(1.1);}
+
+#yesBtn{
+background:#ff4d88;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 5px pink;}
+50%{box-shadow:0 0 20px red;}
+100%{box-shadow:0 0 5px pink;}
+}
+
+#noBtn{
+background:#555;
+position:absolute;
 }
 
 img{
-width:90%;
-max-width:320px;
-height:auto;
+width:260px;
+border-radius:20px;
+margin:10px;
+animation:zoomFade 2s;
 }
+
+@keyframes zoomFade{
+from{opacity:0;transform:scale(0.8);}
+to{opacity:1;transform:scale(1);}
+}
+
+.heart{
+position:fixed;
+animation:float 4s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(100vh);}
+}
+
+@media(max-width:600px){
+
+.page{padding:20px;}
+
+h1{font-size:24px;line-height:1.4;}
+
+p{font-size:16px;padding:0 10px;}
+
+button{font-size:16px;padding:10px 20px;}
+
+img{width:90%;max-width:320px;height:auto;}
 
 input{
 font-size:16px;
@@ -166,14 +150,14 @@ outline:none;
 <body>
 
 <audio id="bgMusic" autoplay loop>
-  <source src="sajde-pendujattcomse-1_pGF15voL.mp3" type="audio/mpeg">
+<source src="sajde-pendujattcomse-1_pGF15voL.mp3" type="audio/mpeg">
 </audio>
 
 <div id="loading" class="page active"><h1 id="loadingText"></h1></div>
 
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
-<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric" onkeypress="if(event.key==='Enter'){checkPass()}">
+<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
 <button type="button" onclick="checkPass()">Enter ❤️</button>
 <p id="error"></p>
 </div>
@@ -187,7 +171,7 @@ outline:none;
 <div id="proposal" class="page">
 <h1>Annamica… before we complete 1000 days… will you marry me? 💍</h1>
 <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
-<button id="noBtn" onmouseover="moveNo()">NO 😈</button>
+<button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">NO 😈</button>
 </div>
 
 <div id="final" class="page">
@@ -197,71 +181,86 @@ outline:none;
 
 <div id="letter" class="page">
 <h1>I Love You So Much Annamica Devi ❤️</h1>
-<p>  Un kooda irundha ovvoru naalum enaku romba special 💖
-Sirippum irundhuchu, sandaiyum irundhuchu 😄😅
-Aana ellathukum mela un mela Irukra Andha love mattum Koranchadhey illa, Koraiyavum koraiyadhu💖</p>
+<p>
+Un kooda irundha ovvoru naalum enaku romba special 💖  
+Sirippum irundhuchu, sandaiyum irundhuchu 😄😅  
+Aana ellathukum mela un mela irukra love mattum koraiyave illa 💖
+</p>
 </div>
 
 <script>
 
-// MUSIC MOBILE FIX
-document.addEventListener("click", function(){
-  let music = document.getElementById("bgMusic");
-  if(music.paused){
-    music.play();
-  }
+/* MUSIC FIX */
+document.addEventListener("click",function(){
+let music=document.getElementById("bgMusic");
+if(music.paused){music.play();}
 });
-// (YOUR ORIGINAL CODE — UNCHANGED)
 
-// STARS BACKGROUND ✨
+/* STARS */
 for(let i=0;i<80;i++){
- let s=document.createElement("div");
- s.className="star";
- s.style.left=Math.random()*100+"vw";
- s.style.top=Math.random()*100+"vh";
- document.body.appendChild(s);
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
 }
 
-// CURSOR HEART TRAIL 💖
+/* HEART TRAIL FIX (MOUSE + TOUCH) */
+
+function createHeart(x,y){
+let h=document.createElement("div");
+h.className="heart";
+h.innerText="💖";
+h.style.left=x+"px";
+h.style.top=y+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),1000);
+}
+
 document.addEventListener("mousemove",e=>{
- let h=document.createElement("div");
- h.className="heart";
- h.innerText="💖";
- h.style.left=e.clientX+"px";
- h.style.top=e.clientY+"px";
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),1000);
+createHeart(e.clientX,e.clientY);
 });
 
-// LOADING
+document.addEventListener("touchmove",e=>{
+createHeart(e.touches[0].clientX,e.touches[0].clientY);
+});
+
+/* LOADING */
+
 let text="From two strangers into a love story of 1000 beautiful days 💕";
 let i=0;
 let loadingText=document.getElementById("loadingText");
 
 let typing=setInterval(()=>{
- loadingText.innerHTML+=text[i];
- i++;
- if(i>=text.length){
-  clearInterval(typing);
-  setTimeout(()=>{
-   loadingText.innerHTML="1000 days together… but I still want a lifetime with you  ❤️";
-   setTimeout(()=>showPage("passwordPage"),2000);
-  },1000);
- }
-},50);
+loadingText.innerHTML+=text[i];
+i++;
 
-// PASSWORD
-function checkPass(){
- let val=document.getElementById("pass").value;
- if(val==="29062023"){
-  showPage("slideshow");
-  startSlideshow();
- } else {
-  document.getElementById("error").innerText="Thappu daw Battuma😄💕 ";
- }
+if(i>=text.length){
+clearInterval(typing);
+
+setTimeout(()=>{
+loadingText.innerHTML="1000 days together… but I still want a lifetime with you ❤️";
+setTimeout(()=>showPage("passwordPage"),2000);
+},1000);
 }
 
-// SLIDESHOW
+},50);
+
+/* PASSWORD */
+
+function checkPass(){
+let val=document.getElementById("pass").value;
+
+if(val==="29062023"){
+showPage("slideshow");
+startSlideshow();
+}else{
+document.getElementById("error").innerText="Thappu daw Battuma😄💕";
+}
+}
+
+/* SLIDESHOW */
+
 let photos=[
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
 "https://raw.githubusercontent.com/ajram4028/love-site/main/WhatsApp%20Image%202026-03-23%20at%204.28.42%20PM.jpeg",
@@ -277,197 +276,132 @@ let captions=[
 let index=0;
 
 function startSlideshow(){
- let slide=setInterval(()=>{
-  document.getElementById("photo").src=photos[index];
-  document.getElementById("caption").innerText=captions[index];
-  index++;
-  if(index>=photos.length){
-   clearInterval(slide);
-   showEmotion();
-  }
- },2000);
+
+let slide=setInterval(()=>{
+
+document.getElementById("photo").src=photos[index];
+document.getElementById("caption").innerText=captions[index];
+
+index++;
+
+if(index>=photos.length){
+clearInterval(slide);
+showEmotion();
 }
 
-// TYPEWRITER EMOTION 💖
+},2000);
+
+}
+
+/* EMOTION */
+
 let emoText=[
 "Rendu perum strangers ah meet pannom 💫",
-    
 "Aana fate connect aayiduchu ❤️✨",
-    
 "Serndhu siricha moments 😄💕",
-    
 "Sila neram azhudhadhum 😢🤍",
-    
 "Infinity sanda nadandhadhu 😅🔥",
-    
 "Ana love mattum kuraiyala ❤️🫶",
-    
 "Days romba special 💕🌙",
-    
 "Un kooda iruntha life azhagu 💖✨",
-    
 "Ippo 1000 days aga podhu 💫🎉",
-    
 "Next idhu 2000 aaganum 💕",
-    
 "Then 3000 and 4000 💖",
-    
 "Ipdi namba saagura vara 💞",
-    
 "Namba onna irukanum 🤝❤️",
-    
 "Unaku naan purushana 💍",
-    
 "Enaku nee pondatiya 👰❤️",
-    
 "Life long en koodave iru 💕🤗",
-    
 "Enna vittu poiradha 🥺❤️",
-    
 "I love you Annamiiii ❤️😘",
-    
 "I have one question for you… 💍✨"
 ];
 
 let emoIndex=0;
 
 function showEmotion(){
- showPage("emotion");
- let emo=document.getElementById("emotionText");
 
- let interval=setInterval(()=>{
-  let txt=emoText[emoIndex];
-  let j=0;
-  let typer=setInterval(()=>{
-   emo.innerHTML+=txt[j];
-   j++;
-   if(j>=txt.length){
-    clearInterval(typer);
-   }
-  },30);
+showPage("emotion");
 
-  emoIndex++;
-  if(emoIndex>=emoText.length){
-   clearInterval(interval);
-   setTimeout(()=>showPage("proposal"),4000);
-  } else {
-   setTimeout(()=>emo.innerHTML="",2000);
-  }
- },2500);
+let emo=document.getElementById("emotionText");
+
+let interval=setInterval(()=>{
+
+let txt=emoText[emoIndex];
+let j=0;
+
+let typer=setInterval(()=>{
+
+emo.innerHTML+=txt[j];
+j++;
+
+if(j>=txt.length){
+clearInterval(typer);
 }
 
-// NO BUTTON TEXTS
-let noTexts = [
-"Heyyy venam d 😭 touch pannadha...",
-"Adei 😳 enna panra… NO ah press panna poriya?!",
-"Thodadha… please da 🥺",
-"Nee idha press panna naan hurt aaiduven 💔",
-"Heyyy Annamica 😭 think pannitu press pannu...",
-"1000 days ku apramum NO ah? 😡",
-"Idha press panna adichiruven 😤 (joke da 😘)",
-"Kuttyma 😭 don’t do this to me...",
-"Nee YES dhaan press pannuva nu namburen ❤️",
-"Adei chello 😏 wrong button paathu iruka...",
-"Thappu button idhu 😜 YES pakkam pogu...",
-"Heyyy kovakaari 😆 calm ah iru… YES press pannu",
-"Sidu moonji 😂 idhu unaku set aagathu…",
-"En thango 💖 idhu unaku illa… YES dhaan",
-"Last warning 😏 NO press panna allow illa...",
-"Heyyyy 😭 naan romba serious ah kekuren...",
-"Please d 🥺 idha vittutu YES pannu...",
-"Un answer already YES dhaan 😘",
-"En world ah ipdi pannadha 😭",
-"Okay fine 😤 NO option soon disappear aagum 😈"
-];
+},30);
+
+emoIndex++;
+
+if(emoIndex>=emoText.length){
+clearInterval(interval);
+setTimeout(()=>showPage("proposal"),4000);
+}else{
+setTimeout(()=>emo.innerHTML="",2000);
+}
+
+},2500);
+
+}
+
+/* NO BUTTON */
+
 let noCount=0;
+
 function moveNo(){
- let btn=document.getElementById("noBtn");
- btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
- btn.style.left=Math.random()*(window.innerWidth-100)+"px";
- btn.style.top=Math.random()*(window.innerHeight-50)+"px";
- noCount++;
- if(noCount>=6) btn.style.display="none";
+
+let btn=document.getElementById("noBtn");
+
+btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+
+noCount++;
+
+if(noCount>=6){
+btn.style.display="none";
 }
 
-// YES CLICK 💥
+}
+
+/* YES CLICK */
+
 function yesClicked(){
- showPage("final");
 
- for(let i=0;i<80;i++){
-  let c=document.createElement("div");
-  c.className="confetti";
-  c.style.left=Math.random()*100+"vw";
-  c.style.background=`hsl(${Math.random()*360},100%,50%)`;
-  document.body.appendChild(c);
-  setTimeout(()=>c.remove(),3000);
- }
+showPage("final");
+
+for(let i=0;i<80;i++){
+
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+
+document.body.appendChild(c);
+
+setTimeout(()=>c.remove(),3000);
+
 }
 
-// NAV
-function showLetter(){ showPage("letter"); }
+}
+
+/* NAV */
+
+function showLetter(){showPage("letter");}
+
 function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
-
-
-// 💥 EXTRA GOD LEVEL ADDITIONS (ONLY ADDED BELOW)
-
-// 💖 DOUBLE CLICK HEART BURST
-document.addEventListener("dblclick", e => {
- for(let i=0;i<25;i++){
-   let h=document.createElement("div");
-   h.className="heart";
-   h.innerText="💖";
-   h.style.left=e.clientX+"px";
-   h.style.top=e.clientY+"px";
-   h.style.fontSize = (Math.random()*20+10)+"px";
-   document.body.appendChild(h);
-   setTimeout(()=>h.remove(),1500);
- }
-});
-
-// 💕 FLOATING LOVE TEXTS
-let loveMsgs = [
-"I love you Annamica ❤️",
-"My forever Battuma 💍",
-"Chello 😘",
-"My thango 💖",
-"Kuttachii 😍",
-"You are my world 🌍",
-"Sidu moonji 😂❤️",
-"My kovakaari 😜",
-"My lovable person 💕",
-"1000 days strong with you 💞",
-"I fall for you every day 💖",
-"Nee dhan en life ❤️",
-"Always yours kuttyma 😘",
-"My happiness = you 💕",
-"Forever us 💑",
-"Unnai romba love panren ❤️",
-"En uyir nee dhaan 💖"
-];
-
-setInterval(()=>{
- let msg=document.createElement("div");
- msg.innerText = loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
- msg.style.position="fixed";
- msg.style.left=Math.random()*100+"vw";
- msg.style.top="100vh";
- msg.style.color="pink";
- msg.style.fontSize="14px";
- document.body.appendChild(msg);
-
- let move=setInterval(()=>{
-   msg.style.top = (msg.offsetTop - 2) + "px";
- },20);
-
- setTimeout(()=>{
-   clearInterval(move);
-   msg.remove();
- },4000);
-
-},1500);
 
 </script>
 
