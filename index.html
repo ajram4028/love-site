@@ -173,7 +173,7 @@ outline:none;
 
 <div id="passwordPage" class="page">
 <h1>Enter our special date 💕</h1>
-<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric">
+<input type="password" id="pass" placeholder="DDMMYYYY" inputmode="numeric" onkeypress="if(event.key==='Enter'){checkPass()}">
 <button type="button" onclick="checkPass()">Enter ❤️</button>
 <p id="error"></p>
 </div>
