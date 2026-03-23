@@ -152,6 +152,8 @@ img {
 
 <script>
 
+// (YOUR ORIGINAL CODE — UNCHANGED)
+
 // STARS BACKGROUND ✨
 for(let i=0;i<80;i++){
  let s=document.createElement("div");
@@ -266,7 +268,7 @@ function showEmotion(){
  },2500);
 }
 
-// ✅ ADDED TEXTS ONLY
+// NO BUTTON TEXTS
 let noTexts = [
 "1000 days ah waste panna poriya? 😭",
 "Think about our 1000 days 😏",
@@ -276,14 +278,10 @@ let noTexts = [
 "Try YES kuttyma ❤️"
 ];
 
-// NO BUTTON
 let noCount=0;
 function moveNo(){
  let btn=document.getElementById("noBtn");
-
- // ✅ ONLY ADDITION
  btn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
-
  btn.style.left=Math.random()*(window.innerWidth-100)+"px";
  btn.style.top=Math.random()*(window.innerHeight-50)+"px";
  noCount++;
@@ -310,6 +308,47 @@ function showPage(id){
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  document.getElementById(id).classList.add("active");
 }
+
+
+// 💥 EXTRA GOD LEVEL ADDITIONS (ONLY ADDED BELOW)
+
+// 💖 DOUBLE CLICK HEART BURST
+document.addEventListener("dblclick", e => {
+ for(let i=0;i<25;i++){
+   let h=document.createElement("div");
+   h.className="heart";
+   h.innerText="💖";
+   h.style.left=e.clientX+"px";
+   h.style.top=e.clientY+"px";
+   h.style.fontSize = (Math.random()*20+10)+"px";
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),1500);
+ }
+});
+
+// 💕 FLOATING LOVE TEXTS
+let loveMsgs = ["I love you ❤️","My forever 💍","Kuttyma 😘","1000 days strong 💕"];
+
+setInterval(()=>{
+ let msg=document.createElement("div");
+ msg.innerText = loveMsgs[Math.floor(Math.random()*loveMsgs.length)];
+ msg.style.position="fixed";
+ msg.style.left=Math.random()*100+"vw";
+ msg.style.top="100vh";
+ msg.style.color="pink";
+ msg.style.fontSize="14px";
+ document.body.appendChild(msg);
+
+ let move=setInterval(()=>{
+   msg.style.top = (msg.offsetTop - 2) + "px";
+ },20);
+
+ setTimeout(()=>{
+   clearInterval(move);
+   msg.remove();
+ },4000);
+
+},1500);
 
 </script>
 
